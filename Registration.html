@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Register - Innovation The Creator Tournament</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
         * {
@@ -15,99 +16,119 @@
 
         :root {
             --upsi-red: #7a0019;
-            --upsi-red-dark: #4a000f;
+            --upsi-red-dark: #5a0012;
+            --upsi-red-glow: #c41e3a;
+            --gold-accent: #d4af37;
             --dark-bg: #0f172a;
-            --slate-text: #475569;
+            --slate-text: #334155;
             --slate-light: #64748b;
-            --gray-bg: #f8fafc;
-            --card-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
-            --border-radius-card: 28px;
+            --gray-bg: #f0f4f9;
+            --card-shadow: 0 25px 40px -14px rgba(0, 0, 0, 0.2);
+            --border-radius-card: 32px;
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--gray-bg);
-            background-image: radial-gradient(#cbd5e1 1.2px, transparent 1.2px);
-            background-size: 32px 32px;
+            background: linear-gradient(145deg, #fefcf8 0%, #f0f4f9 100%);
+            background-attachment: fixed;
             margin: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
             scroll-behavior: smooth;
+            position: relative;
+        }
+
+        /* Animated background decoration */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 15% 25%, rgba(122,0,25,0.04) 0%, transparent 45%),
+                radial-gradient(circle at 85% 65%, rgba(212,175,55,0.03) 0%, transparent 55%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .hero-section {
-            background: linear-gradient(125deg, var(--upsi-red) 0%, #5e0013 45%, var(--upsi-red-dark) 100%);
+            background: linear-gradient(125deg, var(--upsi-red) 0%, #8b001f 35%, var(--upsi-red-dark) 100%);
             width: 100%;
-            padding: 48px 24px 56px;
+            padding: 52px 24px 68px;
             color: white;
             text-align: center;
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
 
         .hero-section::before {
-            content: '';
+            content: '📝';
             position: absolute;
-            top: -30%;
-            right: -15%;
-            width: 280px;
-            height: 280px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 50%;
+            font-size: 200px;
+            opacity: 0.07;
+            bottom: -50px;
+            left: -30px;
+            transform: rotate(-12deg);
             pointer-events: none;
         }
 
         .hero-section::after {
-            content: '';
+            content: '✨';
             position: absolute;
-            bottom: -20%;
-            left: -5%;
-            width: 220px;
-            height: 220px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
+            font-size: 160px;
+            opacity: 0.06;
+            top: -20px;
+            right: -20px;
+            transform: rotate(10deg);
             pointer-events: none;
         }
 
         nav {
-            margin-bottom: 28px;
+            margin-bottom: 32px;
             position: relative;
-            z-index: 2;
+            z-index: 3;
         }
 
         .nav-link {
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
-            margin: 0 18px;
+            margin: 0 20px;
             font-weight: 600;
             font-size: 0.95rem;
             letter-spacing: 0.3px;
-            transition: 0.25s ease;
-            padding-bottom: 4px;
+            transition: all 0.25s ease;
+            padding-bottom: 6px;
             border-bottom: 2px solid transparent;
         }
 
         .nav-link:hover {
             color: white;
-            border-bottom-color: #ffb3c1;
-            opacity: 1;
+            border-bottom-color: #ffccd4;
+            transform: translateY(-1px);
         }
 
         .nav-link.active-nav {
             color: white;
-            border-bottom-color: white;
-            font-weight: 700;
+            border-bottom-color: var(--gold-accent);
+            font-weight: 800;
             opacity: 1;
         }
 
         .hero-section h1 {
-            font-size: 2.7rem;
+            font-size: 3rem;
             font-weight: 800;
             letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff, #ffe0e5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             margin-bottom: 12px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            text-shadow: none;
         }
 
         .hero-section p {
@@ -116,23 +137,28 @@
             font-weight: 500;
         }
 
+        /* Main Content - Glassmorphism */
         .main-content {
-            background: white;
-            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(3px);
+            max-width: 1150px;
             width: 92%;
-            margin: -40px auto 50px;
-            padding: 38px 36px 48px;
+            margin: -48px auto 55px;
+            padding: 45px 40px 55px;
             border-radius: var(--border-radius-card);
             box-shadow: var(--card-shadow);
             flex: 1;
-            transition: all 0.2s;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 5;
+            border: 1px solid rgba(255,255,240,0.5);
         }
 
         .main-content h2 {
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 2.2rem;
+            font-weight: 800;
             color: #1e293b;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             position: relative;
             display: inline-block;
         }
@@ -140,41 +166,48 @@
         .main-content h2:after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -12px;
             left: 20%;
             width: 60%;
-            height: 3px;
-            background: var(--upsi-red);
-            border-radius: 3px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--upsi-red), var(--gold-accent));
+            border-radius: 4px;
         }
 
         .desc-text {
             color: var(--slate-text);
-            margin-top: 20px;
-            margin-bottom: 28px;
+            margin-top: 24px;
+            margin-bottom: 32px;
             font-size: 1rem;
-            max-width: 85%;
+            max-width: 80%;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.6;
         }
 
+        /* Form Wrapper - Premium */
         .form-embed-wrapper {
             background: #ffffff;
-            border-radius: 24px;
-            margin: 20px 0 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e2e8f0;
+            border-radius: 32px;
+            margin: 25px 0 20px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(122, 0, 25, 0.15);
             overflow: hidden;
-            transition: all 0.2s;
+            transition: all 0.3s;
+        }
+
+        .form-embed-wrapper:hover {
+            box-shadow: 0 20px 35px -10px rgba(122, 0, 25, 0.2);
+            border-color: rgba(122, 0, 25, 0.3);
         }
 
         .responsive-iframe-container {
             position: relative;
             width: 100%;
             height: 0;
-            padding-bottom: 170%;
+            padding-bottom: 165%;
             overflow: hidden;
-            border-radius: 20px;
+            border-radius: 28px;
         }
 
         .responsive-iframe-container iframe {
@@ -187,15 +220,38 @@
             background: #fff;
         }
 
+        /* Info Banner */
+        .info-banner {
+            background: linear-gradient(115deg, #fef5e8, #fff8f0);
+            border-radius: 28px;
+            padding: 18px 28px;
+            margin-top: 28px;
+            font-size: 0.85rem;
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.02);
+        }
+
+        .info-banner span {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        /* Bottom Navigation - Premium */
         .bottom-nav {
             margin-top: 55px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 18px;
-            padding-top: 30px;
-            border-top: 2px solid #eef2ff;
+            gap: 20px;
+            padding-top: 35px;
+            border-top: 2px solid rgba(122, 0, 25, 0.12);
         }
 
         .nav-arrow {
@@ -205,71 +261,122 @@
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            padding: 10px 18px;
+            padding: 12px 28px;
             border-radius: 60px;
-            transition: all 0.25s;
-            background: #f1f5f9;
+            transition: all 0.3s;
+            letter-spacing: 0.3px;
         }
 
         .back-arrow {
-            color: #334155;
-            background: #f1f5f9;
+            color: #2d3e50;
+            background: #eef2f8;
+            border: 1px solid #dce5ec;
         }
 
         .back-arrow:hover {
-            background: #e2e8f0;
-            transform: translateX(-6px);
-            color: #0f172a;
+            background: #e2e8f2;
+            transform: translateX(-8px);
+            color: #1e293b;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.06);
         }
 
         .home-arrow {
-            color: var(--upsi-red);
-            background: #fff0f2;
+            color: white;
+            background: linear-gradient(105deg, var(--upsi-red), #a1223a);
+            box-shadow: 0 6px 16px rgba(122, 0, 25, 0.3);
         }
 
         .home-arrow:hover {
-            background: #ffe4e8;
-            transform: scale(1.02);
-            box-shadow: 0 4px 10px rgba(122, 0, 25, 0.15);
+            transform: translateX(8px);
+            background: linear-gradient(105deg, #9a0025, #c72a4a);
+            box-shadow: 0 12px 24px rgba(122, 0, 25, 0.4);
         }
 
         footer {
             width: 100%;
-            background: var(--dark-bg);
-            color: #94a3b8;
+            background: linear-gradient(95deg, #0a0f1c, #0f1424);
+            color: #a3b3cc;
             text-align: center;
-            padding: 32px 20px;
+            padding: 38px 20px;
             font-size: 0.85rem;
-            letter-spacing: 0.3px;
             margin-top: auto;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
 
+        footer p:first-child {
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* Responsive */
         @media (max-width: 750px) {
             .main-content {
-                padding: 28px 20px 38px;
+                padding: 32px 22px 42px;
+                width: 95%;
             }
             .hero-section h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             .desc-text {
                 max-width: 100%;
             }
             .responsive-iframe-container {
-                padding-bottom: 190%;
+                padding-bottom: 195%;
             }
             .nav-link {
                 margin: 0 12px;
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
             .bottom-nav {
                 justify-content: center;
+                gap: 16px;
+            }
+            .nav-arrow {
+                padding: 10px 22px;
+                font-size: 0.9rem;
+            }
+            .info-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
             }
         }
 
         @media (min-width: 1200px) {
             .responsive-iframe-container {
-                padding-bottom: 150%;
+                padding-bottom: 148%;
             }
+        }
+
+        /* Loading Animation for iframe */
+        .iframe-loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,245,0.9);
+            z-index: 10;
+            border-radius: 28px;
+            backdrop-filter: blur(2px);
+            transition: opacity 0.4s;
+        }
+
+        .loader-spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid rgba(122, 0, 25, 0.2);
+            border-top: 4px solid var(--upsi-red);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -286,12 +393,16 @@
     </div>
 
     <div class="main-content">
-        <h2>Registration Form</h2>
+        <h2><i class="fas fa-pen-alt" style="color: #7a0019; margin-right: 12px;"></i> Registration Form</h2>
         <p class="desc-text">Please fill in your details accurately. A confirmation email will be sent to you after successful registration.</p>
 
-        <div class="form-embed-wrapper">
-            <div class="responsive-iframe-container">
+        <div class="form-embed-wrapper" id="formWrapper">
+            <div class="responsive-iframe-container" id="iframeContainer">
+                <div id="iframeLoader" class="iframe-loader">
+                    <div class="loader-spinner"></div>
+                </div>
                 <iframe 
+                    id="googleForm"
                     src="https://docs.google.com/forms/d/e/1FAIpQLScaWxscGuldWgpDV-pIaY1iP8Gm2agS0zNlNAxXkjckBs14HA/viewform?embedded=true" 
                     title="Innovation The Creator Registration Form"
                     frameborder="0"
@@ -304,25 +415,76 @@
             </div>
         </div>
 
-        <div style="background:#F1F5F9; border-radius: 24px; padding: 14px 20px; margin-top: 25px; font-size: 0.85rem; text-align: left; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: space-between;">
-            <span style="display: flex; gap: 8px; align-items: center;">📌 <span style="color:#334155;">All fields marked with * are mandatory. No fees required.</span></span>
-            <span style="display: flex; gap: 5px;">🔒 <span style="color:#334155;">Data protected — powered by Google Forms</span></span>
+        <div class="info-banner">
+            <span><i class="fas fa-star" style="color: #d4af37;"></i> <span style="color:#334155;">All fields marked with * are mandatory. No fees required.</span></span>
+            <span><i class="fas fa-lock" style="color: #7a0019;"></i> <span style="color:#334155;">Data protected — powered by Google Forms</span></span>
+            <span><i class="fas fa-envelope" style="color: #7a0019;"></i> <span style="color:#334155;">Confirmation via email within 48h</span></span>
         </div>
 
         <div class="bottom-nav">
             <a href="Category.html" class="nav-arrow back-arrow">
-                <span>←</span> Back to Categories
+                <i class="fas fa-arrow-left"></i> Back to Categories
             </a>
             <a href="Index.html" class="nav-arrow home-arrow">
-                Return Home 🏠
+                Return Home <i class="fas fa-home"></i>
             </a>
         </div>
     </div>
 
     <footer>
         <p>© 2026 Innovation The Creator Tournament — Where Ideas Shape The Future</p>
-        <p style="margin-top: 10px; font-size: 0.75rem;">Need help? Contact support@innovationcreator.com</p>
+        <p style="margin-top: 12px; font-size: 0.7rem;"><i class="fas fa-crown"></i> Innovate. Create. Inspire.</p>
     </footer>
 
+    <script>
+        (function() {
+            // Remove loader once iframe loads
+            const iframe = document.getElementById('googleForm');
+            const loader = document.getElementById('iframeLoader');
+            
+            if (iframe && loader) {
+                iframe.addEventListener('load', function() {
+                    if (loader) {
+                        loader.style.opacity = '0';
+                        setTimeout(() => {
+                            if (loader && loader.parentNode) loader.remove();
+                        }, 500);
+                    }
+                });
+                
+                // Fallback timeout: remove loader after 3.5s if load event fails
+                setTimeout(() => {
+                    if (loader && loader.parentNode) {
+                        loader.style.opacity = '0';
+                        setTimeout(() => {
+                            if (loader && loader.parentNode) loader.remove();
+                        }, 300);
+                    }
+                }, 4000);
+            }
+            
+            // Add subtle entrance animation for main content
+            const mainContent = document.querySelector('.main-content');
+            if (mainContent) {
+                mainContent.style.opacity = '0';
+                mainContent.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    mainContent.style.transition = 'all 0.5s ease-out';
+                    mainContent.style.opacity = '1';
+                    mainContent.style.transform = 'translateY(0)';
+                }, 100);
+            }
+            
+            // Fix for any navigation hover issues on mobile
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('touchstart', function() {
+                    // Simple touch feedback
+                });
+            });
+            
+            console.log("Innovation Creator Registration — Enhanced Design Loaded");
+        })();
+    </script>
 </body>
 </html>

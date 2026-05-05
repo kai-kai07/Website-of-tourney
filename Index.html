@@ -38,7 +38,6 @@
 
         nav { margin-bottom: 30px; }
 
-        /* ALL LINKS OPEN IN SAME WINDOW BY DEFAULT */
         .nav-link { 
             color: white; 
             text-decoration: none; 
@@ -137,6 +136,29 @@
 
         .counter-number { font-size: clamp(3rem, 8vw, 4.5rem); font-weight: 700; }
 
+        /* NEXT ARROW STYLING */
+        .next-page-nav {
+            margin-top: 40px;
+            text-align: right;
+            padding: 20px 0;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .next-arrow {
+            text-decoration: none;
+            color: var(--upsi-red);
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s;
+        }
+
+        .next-arrow:hover {
+            transform: translateX(10px);
+        }
+
         footer {
             width: 100%;
             background: var(--dark-bg);
@@ -205,6 +227,16 @@
             <div style="font-size: 1.1rem; color: white; margin-bottom: 10px;">Current Registered Innovators</div>
             <div class="counter-number" id="participant-count">0</div>
         </div>
+
+       <!-- UPDATED: BOTTOM NAVIGATION ARROW WITH JAVASCRIPT FIX -->
+<div class="next-page-nav">
+    <a href="https://sites.google.com/view/the-fake-tournament/kategori?authuser=0" 
+       target="_top" 
+       onclick="window.top.location.href='https://sites.google.com/view/the-fake-tournament/kategori?authuser=0'; return false;"
+       class="next-arrow">
+        Next: View Categories <span>→</span>
+    </a>
+</div>
     </div>
 
     <footer>

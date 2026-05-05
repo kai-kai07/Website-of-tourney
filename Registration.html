@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Innovation The Creator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --upsi-red: #7a0019;
+            --tech-accent: #00f2fe;
+            --dark-bg: #0f172a;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8fafc;
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 30px 30px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+        }
+
+        /* HERO SECTION */
+        .hero-section {
+            background: linear-gradient(135deg, var(--upsi-red) 0%, #4a000f 100%);
+            width: 100%;
+            padding: 30px 0 50px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        /* LINKS OPEN IN SAME WINDOW BY DEFAULT */
+        .nav-link { 
+            color: white; 
+            text-decoration: none; 
+            margin: 0 15px; 
+            opacity: 0.8; 
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .nav-link:hover { opacity: 1; text-decoration: underline; }
+
+        /* MAIN CONTENT */
+        .main-content {
+            background: white;
+            max-width: 950px;
+            width: 92%;
+            margin: -35px auto 40px;
+            padding: 20px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            text-align: center;
+            flex: 1;
+        }
+
+        .form-header-notice {
+            background: #f1f5f9;
+            border-left: 5px solid var(--upsi-red);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* FORM WRAPPER */
+        .form-wrapper {
+            position: relative;
+            width: 100%;
+            height: 1400px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        footer {
+            width: 100%;
+            background: var(--dark-bg);
+            color: #94a3b8;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: auto;
+        }
+
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 600px) {
+            .hero-section { padding: 30px 0 45px; }
+            .main-content { width: 96%; padding: 10px; margin-top: -25px; }
+            .form-wrapper { height: 1800px; }
+            .nav-link { margin: 0 8px; font-size: 0.8rem; }
+            h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-section">
+        <nav style="margin-bottom: 15px;">
+            <a href="Index.html" class="nav-link">Home</a>
+            <a href="Categories.html" class="nav-link">Categories</a>
+            <a href="Registration.html" class="nav-link" style="font-weight:bold; opacity:1;">Register</a>
+        </nav>
+        <h1>Official Registration</h1>
+        <p>Join the next generation of creators</p>
+    </div>
+
+    <div class="main-content">
+        <div class="form-header-notice">
+            <div style="font-size: 2rem;">📝</div>
+            <div>
+                <strong style="color: var(--upsi-red);">Important:</strong><br>
+                <span style="color: #475569; font-size: 0.9rem;">Fill out the form below carefully. Ensure your email is correct for certificate delivery.</span>
+            </div>
+        </div>
+
+        <div class="form-wrapper">
+            <iframe 
+                title="Tournament Registration Form"
+                src="https://docs.google.com/forms/d/e/1FAIpQLScaWxscGuldWgpDV-pIaY1iP8Gm2agS0zNlNAxXkjckBs14HA/viewform?embedded=true">
+                Loading registration form…
+            </iframe>
+        </div>
+
+        <p style="margin-top: 25px; color: #64748b; font-size: 0.85rem;">
+            Having trouble viewing the form? 
+            <!-- Updated: target="_blank" removed to open in the same window -->
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScaWxscGuldWgpDV-pIaY1iP8Gm2agS0zNlNAxXkjckBs14HA/viewform" 
+               style="color: var(--upsi-red); font-weight: bold;">
+               Click here to open directly
+            </a>
+        </p>
+    </div>
+
+    <footer>
+        <p>© 2026 Innovation The Creator Tournament</p>
+        <h6 style="color: #64748b; margin-top: 10px; letter-spacing: 1px;">LAMAN WEB INI HANYA MEMENUHI KEPERLUAN ASAS PEMBANGUNAN WEB</h6>
+    </footer>
+
+</body>
+</html>

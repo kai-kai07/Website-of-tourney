@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - Innovation The Creator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --upsi-red: #7a0019;
+            --dark-bg: #0f172a;
+            --accent-green: #10b981;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8fafc;
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 30px 30px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+        }
+
+        /* HERO SECTION */
+        .hero-section {
+            background: linear-gradient(135deg, var(--upsi-red) 0%, #4a000f 100%);
+            width: 100%;
+            padding: 40px 0 60px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        /* LINKS OPEN IN SAME WINDOW BY DEFAULT */
+        .nav-link { 
+            color: white; 
+            text-decoration: none; 
+            margin: 0 15px; 
+            opacity: 0.8; 
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .nav-link:hover { opacity: 1; text-decoration: underline; }
+
+        /* MAIN CONTENT */
+        .main-content {
+            background: white;
+            max-width: 1100px;
+            width: 90%;
+            margin: -40px auto 40px;
+            padding: 40px 20px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            flex: 1;
+            text-align: center;
+        }
+
+        .category-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        /* CATEGORY CARDS */
+        .category-card {
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .category-card:hover {
+            border-color: var(--upsi-red);
+            transform: translateY(-5px);
+        }
+
+        .syarat-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .syarat-list li {
+            padding: 8px 0 8px 30px;
+            position: relative;
+            font-size: 0.9rem;
+            color: #475569;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .syarat-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        /* HIDDEN OPTIONS PANEL */
+        .options-info {
+            display: none;
+            margin-top: 20px;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px dashed var(--upsi-red);
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* CTA BUTTON */
+        .btn-register-main {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 40px;
+            background: var(--dark-bg);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-register-main:hover {
+            background: var(--upsi-red);
+        }
+
+        footer {
+            width: 100%;
+            background: var(--dark-bg);
+            color: #94a3b8;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: auto;
+        }
+
+        @media (max-width: 600px) {
+            .main-content { width: 95%; padding: 30px 15px; }
+            .nav-link { margin: 0 8px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-section">
+        <nav style="margin-bottom: 20px;">
+            <a href="Index.html" class="nav-link">Home</a>
+            <a href="Category.html" class="nav-link" style="font-weight:bold; opacity:1;">Categories</a>
+            <a href="Registration.html" class="nav-link">Register</a>
+        </nav>
+        <h1>Tournament Categories</h1>
+        <p>Click a category below to reveal details</p>
+    </div>
+
+    <div class="main-content">
+        <div class="category-container">
+            
+            <!-- SCHOOL CARD -->
+            <div class="category-card" onclick="toggleOptions('school')">
+                <div style="font-size: 3rem; text-align: center;">🎒</div>
+                <h2 style="color: var(--upsi-red); text-align: center;">School</h2>
+                <ul class="syarat-list">
+                    <li>Students aged 7 - 17 years old.</li>
+                    <li>Education or Science based innovation.</li>
+                    <li>Certificates provided for all.</li>
+                </ul>
+                <div id="school-options" class="options-info">
+                    <p>👤 Individual Entry</p>
+                    <p>👥 Group Entry (Max 3 members)</p>
+                </div>
+            </div>
+
+            <!-- IPT CARD -->
+            <div class="category-card" onclick="toggleOptions('ipt')">
+                <div style="font-size: 3rem; text-align: center;">🏛️</div>
+                <h2 style="color: var(--upsi-red); text-align: center;">Higher Ed / Open</h2>
+                <ul class="syarat-list">
+                    <li>University students & General public.</li>
+                    <li>Functional prototype is required.</li>
+                    <li>High-impact social or tech solutions.</li>
+                </ul>
+                <div id="ipt-options" class="options-info">
+                    <p>👤 Individual Entry</p>
+                    <p>👥 Group Entry (Max 5 members)</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="margin-top: 50px;">
+            <p style="color: #64748b;">Ready to join?</p>
+            <!-- Link opens in same window by default -->
+            <a href="https://sites.google.com/view/the-fake-tournament/pendaftaran?authuser=0" class="btn-register-main">Proceed to Registration</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Innovation The Creator Tournament</p>
+        <h6 style="color: #64748b; margin-top: 10px; letter-spacing: 1px;">LAMAN WEB INI HANYA MEMENUHI KEPERLUAN ASAS PEMBANGUNAN WEB</h6>
+    </footer>
+
+    <script>
+        function toggleOptions(id) {
+            document.getElementById('school-options').style.display = 'none';
+            document.getElementById('ipt-options').style.display = 'none';
+            document.getElementById(id + '-options').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

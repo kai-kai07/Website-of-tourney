@@ -2,20 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Categories - Innovation The Creator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --upsi-red: #7a0019;
+            --upsi-red-light: #9e1e32;
             --dark-bg: #0f172a;
-            --slate-text: #64748b;
+            --slate-text: #475569;
+            --slate-light: #64748b;
+            --gray-bg: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #f8fafc;
+            background-color: var(--gray-bg);
             background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
             background-size: 30px 30px;
             margin: 0;
@@ -28,126 +37,599 @@
         .hero-section {
             background: linear-gradient(135deg, var(--upsi-red) 0%, #4a000f 100%);
             width: 100%;
-            padding: 40px 0;
+            padding: 48px 0 52px;
             color: white;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+            position: relative;
         }
 
-        nav { margin-bottom: 20px; }
-        .nav-link { color: white; text-decoration: none; margin: 0 15px; opacity: 0.8; font-size: 0.9rem; transition: 0.3s; }
-        .nav-link:hover { opacity: 1; text-decoration: underline; }
+        nav { 
+            margin-bottom: 24px; 
+        }
+        
+        .nav-link { 
+            color: white; 
+            text-decoration: none; 
+            margin: 0 15px; 
+            opacity: 0.85; 
+            font-size: 0.95rem; 
+            font-weight: 600;
+            transition: 0.3s;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .nav-link:hover { 
+            opacity: 1; 
+            border-bottom-color: rgba(255,255,255,0.6);
+        }
+        
+        .nav-link.active-nav {
+            font-weight: bold;
+            opacity: 1;
+            border-bottom-color: white;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 8px;
+        }
 
         .main-content {
             background: white;
-            max-width: 900px;
+            max-width: 950px;
             width: 90%;
-            margin: -30px auto 40px;
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            margin: -40px auto 50px;
+            padding: 40px 35px;
+            border-radius: 28px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
             flex: 1;
+            transition: all 0.2s;
         }
 
+        /* Category Cards - Clickable & Interactive */
         .category-card {
             background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 25px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #e2edf2;
+            border-radius: 24px;
+            padding: 24px 28px;
+            margin-bottom: 28px;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
         }
-        .category-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 30px -12px rgba(0, 0, 0, 0.12);
+            border-color: #cbd5e1;
+        }
+        
+        /* Active/expanded state */
+        .category-card.expanded {
+            background: #fefcf7;
+            border-left: 5px solid var(--upsi-red);
+            box-shadow: 0 12px 28px rgba(122, 0, 25, 0.08);
+        }
 
-        .cat-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; color: var(--upsi-red); }
-        .cat-icon { font-size: 2rem; }
-
-        /* MULTI-BUTTON NAVIGATION STYLING */
+        .cat-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+            color: var(--upsi-red);
+            pointer-events: none;
+        }
+        
+        .cat-icon {
+            font-size: 2.2rem;
+            transition: transform 0.2s;
+        }
+        
+        .category-card:hover .cat-icon {
+            transform: scale(1.02);
+        }
+        
+        .cat-header h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.3px;
+        }
+        
+        .category-card ul {
+            color: var(--slate-text);
+            line-height: 1.75;
+            margin-top: 6px;
+            margin-left: 20px;
+            font-size: 0.95rem;
+            pointer-events: none;
+        }
+        
+        .category-card li {
+            margin-bottom: 6px;
+        }
+        
+        /* Expandable inner section (individual / team options) */
+        .expand-section {
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 2px dashed #e2e8f0;
+            display: none;
+            animation: fadeSlideDown 0.35s ease forwards;
+        }
+        
+        .category-card.expanded .expand-section {
+            display: block;
+        }
+        
+        @keyframes fadeSlideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .entry-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin: 15px 0 10px;
+            justify-content: space-between;
+        }
+        
+        .entry-card {
+            flex: 1;
+            min-width: 180px;
+            background: #f1f5f9;
+            border-radius: 20px;
+            padding: 18px 16px;
+            transition: all 0.2s;
+            text-align: center;
+            cursor: pointer;
+            border: 1.5px solid transparent;
+        }
+        
+        .entry-card:hover {
+            background: #eef2ff;
+            transform: scale(0.98);
+            border-color: var(--upsi-red);
+        }
+        
+        .entry-card.selected-entry {
+            background: #fff0f2;
+            border-color: var(--upsi-red);
+            box-shadow: 0 6px 14px rgba(122, 0, 25, 0.1);
+        }
+        
+        .entry-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .entry-title {
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+        
+        .entry-desc {
+            font-size: 0.8rem;
+            color: var(--slate-light);
+            margin-top: 8px;
+        }
+        
+        .selection-badge {
+            display: inline-block;
+            margin-top: 12px;
+            background: var(--upsi-red);
+            color: white;
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-weight: 600;
+        }
+        
+        .info-note {
+            font-size: 0.75rem;
+            color: #5b6e8c;
+            background: #f8fafc;
+            padding: 8px 14px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+        }
+        
+        /* bottom navigation */
         .bottom-nav {
-            margin-top: 50px;
+            margin-top: 48px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 30px;
-            border-top: 2px solid #f1f5f9;
+            padding-top: 28px;
+            border-top: 2px solid #f0f2f5;
+            flex-wrap: wrap;
+            gap: 16px;
         }
 
         .nav-arrow {
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
+            font-weight: 700;
+            font-size: 1rem;
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            transition: 0.3s;
+            transition: 0.25s;
+            padding: 8px 16px;
+            border-radius: 60px;
         }
 
-        .back-arrow { color: var(--slate-text); }
-        .back-arrow:hover { transform: translateX(-8px); color: #334155; }
+        .back-arrow { 
+            color: var(--slate-text); 
+            background: #f1f5f9;
+        }
+        
+        .back-arrow:hover { 
+            transform: translateX(-6px); 
+            color: #1e293b; 
+            background: #e6edf4;
+        }
 
-        .next-arrow { color: var(--upsi-red); }
-        .next-arrow:hover { transform: translateX(8px); }
-
-        footer { width: 100%; background: var(--dark-bg); color: #94a3b8; text-align: center; padding: 30px 0; }
+        .next-arrow { 
+            color: var(--upsi-red); 
+            background: #fff0f2;
+        }
+        
+        .next-arrow:hover { 
+            transform: translateX(6px); 
+            background: #ffe4e8;
+        }
+        
+        footer { 
+            width: 100%; 
+            background: var(--dark-bg); 
+            color: #94a3b8; 
+            text-align: center; 
+            padding: 28px 20px; 
+            font-size: 0.85rem;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 700px) {
+            .main-content {
+                padding: 28px 18px;
+            }
+            .entry-options {
+                flex-direction: column;
+                gap: 14px;
+            }
+            .cat-header h2 {
+                font-size: 1.3rem;
+            }
+            .hero-section h1 {
+                font-size: 1.9rem;
+            }
+        }
+        
+        /* subtle interactive pulse */
+        .click-hint {
+            font-size: 0.7rem;
+            color: #8096b3;
+            margin-top: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #f1f5f9;
+            padding: 3px 10px;
+            border-radius: 30px;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
 
     <div class="hero-section">
         <nav>
-            <!-- UPDATED LINKS FOR NETLIFY -->
             <a href="Index.html" class="nav-link">Home</a>
-            <a href="Category.html" class="nav-link" style="font-weight:bold; opacity:1;">Categories</a>
+            <a href="Category.html" class="nav-link active-nav">Categories</a>
             <a href="Registration.html" class="nav-link">Register</a>
         </nav>
         <h1>Tournament Categories</h1>
-        <p>Choose your field of innovation</p>
+        <p>Choose your field of innovation • Tap on any category to see entry types</p>
     </div>
 
     <div class="main-content">
-        <!-- School Category -->
-        <div class="category-card">
+        <!-- School Category Card (clickable) -->
+        <div class="category-card" data-category="school">
             <div class="cat-header">
                 <span class="cat-icon">🎒</span>
                 <h2>School Category</h2>
             </div>
-            <ul style="color: #475569; line-height: 1.8;">
+            <ul>
                 <li>Open to students aged 7 to 17.</li>
                 <li>Focus on STEM and creative education solutions.</li>
                 <li>Group size: Max 3 members.</li>
             </ul>
+            <div class="click-hint">
+                👆 Tap to see Individual / Team options
+            </div>
+            
+            <!-- EXPANDABLE SECTION: Individual vs Team -->
+            <div class="expand-section">
+                <div style="font-weight: 600; margin-bottom: 12px; color: #334155;">📌 Choose participation mode:</div>
+                <div class="entry-options">
+                    <div class="entry-card" data-entry-type="individual" data-parent="school">
+                        <span class="entry-icon">🧑‍🎓</span>
+                        <div class="entry-title">Individual</div>
+                        <div class="entry-desc">Solo participant, full ownership of idea</div>
+                        <span class="selection-badge" style="display: none;">Selected</span>
+                    </div>
+                    <div class="entry-card" data-entry-type="team" data-parent="school">
+                        <span class="entry-icon">👥</span>
+                        <div class="entry-title">Team</div>
+                        <div class="entry-desc">Collaborate with up to 3 members</div>
+                        <span class="selection-badge" style="display: none;">Selected</span>
+                    </div>
+                </div>
+                <div class="info-note">
+                    ℹ️ Your preference will be saved for registration. You can change anytime.
+                </div>
+            </div>
         </div>
 
-        <!-- Higher Ed Category -->
-        <div class="category-card">
+        <!-- Higher Ed / Open Category Card (clickable) -->
+        <div class="category-card" data-category="highered">
             <div class="cat-header">
                 <span class="cat-icon">🏛️</span>
                 <h2>Higher Education / Open</h2>
             </div>
-            <ul style="color: #475569; line-height: 1.8;">
+            <ul>
                 <li>Open to University students and the general public.</li>
                 <li>Must provide a functional prototype or proof of concept.</li>
                 <li>Group size: Max 5 members.</li>
             </ul>
+            <div class="click-hint">
+                👆 Tap to see Individual / Team options
+            </div>
+            
+            <!-- EXPANDABLE SECTION: Individual vs Team -->
+            <div class="expand-section">
+                <div style="font-weight: 600; margin-bottom: 12px; color: #334155;">📌 Choose participation mode:</div>
+                <div class="entry-options">
+                    <div class="entry-card" data-entry-type="individual" data-parent="highered">
+                        <span class="entry-icon">🔬</span>
+                        <div class="entry-title">Individual</div>
+                        <div class="entry-desc">Solo researcher / creator</div>
+                        <span class="selection-badge" style="display: none;">Selected</span>
+                    </div>
+                    <div class="entry-card" data-entry-type="team" data-parent="highered">
+                        <span class="entry-icon">🤝</span>
+                        <div class="entry-title">Team</div>
+                        <div class="entry-desc">Up to 5 members, interdisciplinary synergy</div>
+                        <span class="selection-badge" style="display: none;">Selected</span>
+                    </div>
+                </div>
+                <div class="info-note">
+                    ℹ️ Select Individual or Team – this will guide your registration flow.
+                </div>
+            </div>
         </div>
-
-        <!-- BOTTOM NAVIGATION UPDATED FOR NETLIFY -->
+        
+        <!-- Hidden persistent storage for selections (user preference) -->
+        <div id="selectionStore" style="display: none;"></div>
+        
+        <!-- BOTTOM NAVIGATION (links preserved) -->
         <div class="bottom-nav">
-            <!-- BACK TO HOME -->
             <a href="Index.html" class="nav-arrow back-arrow">
                 <span>←</span> Back to Home
             </a>
-
-            <!-- NEXT TO REGISTER -->
-            <a href="Registration.html" class="nav-arrow next-arrow">
+            <a href="Registration.html" class="nav-arrow next-arrow" id="registerNavLink">
                 Register Now <span>→</span>
             </a>
         </div>
     </div>
 
     <footer>
-        <p>© 2026 Innovation The Creator Tournament</p>
+        <p>© 2026 Innovation The Creator Tournament — Innovate, Collaborate, Elevate.</p>
     </footer>
 
+    <script>
+        (function() {
+            // Get all category cards
+            const categoryCards = document.querySelectorAll('.category-card');
+            
+            // Store selections per category: { school: 'individual' or 'team', highered: ... }
+            let selectedEntries = {
+                school: null,
+                highered: null
+            };
+            
+            // Helper function to update UI badges and remove selection from other entries in same category
+            function updateSelectionUI(categoryId, selectedType) {
+                const parentCard = document.querySelector(`.category-card[data-category="${categoryId}"]`);
+                if (!parentCard) return;
+                
+                const entryCards = parentCard.querySelectorAll('.entry-card');
+                entryCards.forEach(card => {
+                    const badge = card.querySelector('.selection-badge');
+                    const entryType = card.getAttribute('data-entry-type');
+                    if (entryType === selectedType) {
+                        // Mark as selected
+                        card.classList.add('selected-entry');
+                        if (badge) badge.style.display = 'inline-block';
+                    } else {
+                        card.classList.remove('selected-entry');
+                        if (badge) badge.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Function to handle click on entry (individual/team)
+            function bindEntryClicks() {
+                const allEntryCards = document.querySelectorAll('.entry-card');
+                allEntryCards.forEach(entry => {
+                    // remove previous listeners to avoid duplication but we can just replace with new one
+                    entry.removeEventListener('click', entryClickHandler);
+                    entry.addEventListener('click', entryClickHandler);
+                });
+            }
+            
+            function entryClickHandler(e) {
+                e.stopPropagation();  // Prevent toggling category collapse when clicking entry
+                const targetCard = this;
+                const parentCategory = targetCard.getAttribute('data-parent');
+                const entryType = targetCard.getAttribute('data-entry-type');
+                
+                if (!parentCategory || !entryType) return;
+                
+                // Store selection
+                selectedEntries[parentCategory] = entryType;
+                
+                // Update UI for that category
+                updateSelectionUI(parentCategory, entryType);
+                
+                // Save to localStorage so it persists across page refresh (optional)
+                localStorage.setItem('innovation_selected_entries', JSON.stringify(selectedEntries));
+                
+                // Provide subtle haptic feedback (optional)
+                targetCard.style.transform = 'scale(0.97)';
+                setTimeout(() => { if(targetCard) targetCard.style.transform = ''; }, 150);
+                
+                // Also expand the category if not already expanded (makes it user friendly)
+                const parentCard = document.querySelector(`.category-card[data-category="${parentCategory}"]`);
+                if (parentCard && !parentCard.classList.contains('expanded')) {
+                    parentCard.classList.add('expanded');
+                }
+            }
+            
+            // Toggle expansion when clicking on category card (but not on inner entry elements)
+            categoryCards.forEach(card => {
+                // Make header + card click to expand/collapse, but avoid conflict when clicking entry-area
+                card.addEventListener('click', function(e) {
+                    // If the click target is inside .expand-section or inside .entry-card, prevent toggling collapse? 
+                    // Actually we want to allow expand/collapse only when clicking on the upper part, but keep expand-section visible when selection exists.
+                    // Better: Allow manual toggle only if click is not on entry-card nor on selection-badge/info-note? 
+                    // But we want user to be able to collapse if needed. However, the requirement: "when you touch either school or open you can see its either enter individual or team"
+                    // We will allow toggling, but only collapse if the click is not inside .entry-card and we don't disrupt selections.
+                    const isEntryClick = e.target.closest('.entry-card');
+                    const isBadgeClick = e.target.closest('.selection-badge');
+                    const isInfoClick = e.target.closest('.info-note');
+                    
+                    if (isEntryClick || isBadgeClick || isInfoClick) {
+                        // Do NOT toggle expanded state when interacting with selection UI
+                        return;
+                    }
+                    
+                    // Otherwise toggle expanded state for the clicked card
+                    this.classList.toggle('expanded');
+                });
+            });
+            
+            // Load previously saved selections from localStorage
+            function loadSavedSelections() {
+                const saved = localStorage.getItem('innovation_selected_entries');
+                if (saved) {
+                    try {
+                        const parsed = JSON.parse(saved);
+                        if (parsed.school) {
+                            selectedEntries.school = parsed.school;
+                            updateSelectionUI('school', parsed.school);
+                        }
+                        if (parsed.highered) {
+                            selectedEntries.highered = parsed.highered;
+                            updateSelectionUI('highered', parsed.highered);
+                        }
+                    } catch(e) { console.warn(e); }
+                }
+                
+                // Also if any category has a selected entry, auto-expand that card for visibility
+                if (selectedEntries.school) {
+                    const schoolCard = document.querySelector('.category-card[data-category="school"]');
+                    if (schoolCard && !schoolCard.classList.contains('expanded')) schoolCard.classList.add('expanded');
+                }
+                if (selectedEntries.highered) {
+                    const higherCard = document.querySelector('.category-card[data-category="highered"]');
+                    if (higherCard && !higherCard.classList.contains('expanded')) higherCard.classList.add('expanded');
+                }
+            }
+            
+            // optional: register nav link hint – show a small reminder if nothing selected
+            const registerBtn = document.getElementById('registerNavLink');
+            if (registerBtn) {
+                registerBtn.addEventListener('click', function(e) {
+                    const schoolSelection = selectedEntries.school;
+                    const higherSelection = selectedEntries.highered;
+                    if (!schoolSelection && !higherSelection) {
+                        // gentle reminder but not blocking, just inform
+                        const reminder = confirm("You haven't selected Individual or Team for any category yet.\n\nTap on a category card (School or Higher Education) and choose Individual or Team before registering.\n\nDo you still want to proceed to registration?");
+                        if (!reminder) {
+                            e.preventDefault();
+                            return;
+                        }
+                    } else {
+                        // Optional: add more context but continue
+                        let message = "";
+                        if (schoolSelection) message += `✓ School: ${schoolSelection.toUpperCase()}\n`;
+                        if (higherSelection) message += `✓ Higher Ed: ${higherSelection.toUpperCase()}\n`;
+                        if (message) {
+                            // show quick tooltip style but not intrusive
+                            console.log("Selected modes:", message);
+                        }
+                    }
+                });
+            }
+            
+            // Rebind entry clicks (in case of dynamic? not needed but ensure)
+            bindEntryClicks();
+            // Load any previously saved choices (persistent)
+            loadSavedSelections();
+            
+            // Small additional: if user clicks on category and does selection, we rebind nothing needed.
+            // For newly added? none, but just ensure.
+            // Also we need to watch for dynamic changes? not needed.
+            // Add a visual enhancement: style expanded section
+            const style = document.createElement('style');
+            style.textContent = `
+                .category-card .expand-section .entry-card {
+                    transition: all 0.2s;
+                }
+                .category-card .expand-section .entry-card.selected-entry {
+                    background: #ffebef;
+                    border: 1.5px solid #7a0019;
+                }
+                .category-card .expand-section .entry-card .selection-badge {
+                    background: #7a0019;
+                    font-size: 0.7rem;
+                    transition: 0.1s;
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Improvement: also listen for any future clicks if needed
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.addedNodes.length) {
+                        bindEntryClicks();
+                    }
+                });
+            });
+            observer.observe(document.body, { childList: true, subtree: true });
+        })();
+    </script>
 </body>
 </html>
